@@ -1,0 +1,45 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server-GE": "cross-env ORG=GE nodemon server",
+    "server-RA": "cross-env ORG=RA nodemon server",
+    "server-TF": "cross-env ORG=TF nodemon server",
+    "test": "jest --detectOpenHandles --testEnvironment=node"
+  },
+  "author": "Eric Starner",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "fabric-network": "^1.4.7",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.10.0",
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0",
+    "underscore": "^1.11.0",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "jest": "^26.4.2",
+    "@types/jest": "^26.0.13",
+    "mongodb-memory-server": "^6.7.5",
+    "nodemon": "^2.0.4",
+    "supertest": "^6.0.1"
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "latest"
+    }
+  }
+}

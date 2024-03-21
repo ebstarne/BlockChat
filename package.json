@@ -1,0 +1,18 @@
+{
+  "name": "blockchat",
+  "version": "1.0.0",
+  "description": "Blockchain chatting application",
+  "scripts": {
+    "server-GE": "cd infrastructure && npm run server-GE",
+    "server-RA": "cd infrastructure && npm run server-RA",
+    "server-TF": "cd infrastructure && npm run server-TF",
+    "client": "npm start --prefix client",
+    "dev-GE": "cd infrastructure && npm run dev-GE",
+    "dev-RA": "cd infrastructure && npm run dev-RA",
+    "dev-TF": "cd infrastructure && npm run dev-TF",
+    "install-all": "npm install && (npm install --prefix server) && (npm install --prefix client) && (npm install --prefix infrastructure)",
+    "install-all-prod": "npm install --production && (npm install --production --prefix  server) && (npm install --production --prefix  client) && (npm install --production --prefix infrastructure)",
+    "test": "cd client && npm run test && cd server && npm run test",
+    "coverage": "npm run test -- --coverage --watchAll=false > coverageReport.txt"
+  }
+}

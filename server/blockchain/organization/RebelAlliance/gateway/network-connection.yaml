@@ -1,0 +1,209 @@
+---
+#
+# The network connection profile provides client applications the information about the target
+# blockchain network that are necessary for the applications to interact with it. These are all
+# knowledge that must be acquired from out-of-band sources. This file provides such a source.
+#
+name: "ncsu-blockchat-network"
+
+#
+# Any properties with an "x-" prefix will be treated as application-specific, exactly like how naming
+# in HTTP headers or swagger properties work. The SDK will simply ignore these fields and leave
+# them for the applications to process. This is a mechanism for different components of an application
+# to exchange information that are not part of the standard schema described below. In particular,
+# the "x-type" property with the "hlfv1" value example below is used by Hyperledger Composer to
+# determine the type of Fabric networks (v0.6 vs. v1.0) it needs to work with.
+#
+x-type: "hlfv1"
+
+#
+# Describe what the target network is/does.
+#
+description: "The NCSU Blockchat network"
+
+#
+# Schema version of the content. Used by the SDK to apply the corresponding parsing rules.
+#
+version: "1.0"
+
+client:
+  # Which organization does this application instance belong to? The value is the name of an org
+  # defined under "organizations"
+  organization: RebelAlliance
+
+  # set connection timeouts for the peer and orderer for the client
+  connection:
+    timeout:
+      peer:
+        # the timeout in seconds to be used on requests to a peer,
+        # for example 'sendTransactionProposal'
+        endorser: 120
+        # the timeout in seconds to be used by applications when waiting for an
+        # event to occur. This time should be used in a javascript timer object
+        # that will cancel the event registration with the channel event hub instance.
+        eventHub: 60
+        # the timeout in seconds to be used when setting up the connection
+        # with the peer event hub. If the peer does not acknowledge the
+        # connection within the time, the application will be notified over the
+        # error callback if provided.
+        eventReg: 3
+      # the timeout in seconds to be used on request to the orderer,
+      # for example
+      orderer: 30
+      # connection options, typically these will be common GRPC settings,
+      # overriding what has been set in the system config file "default.json"
+    options:
+      grpc.keepalive_timeout_ms: 10000
+
+
+
+#
+# [Optional]. But most apps would have this section so that channel objects can be constructed
+# based on the content below. If an app is creating channels, then it likely will not need this
+# section.
+#
+channels:
+  # name of the channel
+  general:
+    # Required. list of orderers designated by the application to use for transactions on this
+    # channel. This list can be a result of access control ("org1" can only access "ordererA"), or
+    # operational decisions to share loads from applications among the orderers.  The values must
+    # be "names" of orgs defined under "organizations/peers"
+    orderers:
+      - orderer-blockchat
+
+    # Required. list of peers from participating orgs
+    peers:
+      peer0-blockchat:
+        # [Optional]. will this peer be sent transaction proposals for endorsement? The peer must
+        # have the chaincode installed. The app can also use this property to decide which peers
+        # to send the chaincode install request. Default: true
+        endorsingPeer: true
+
+        # [Optional]. will this peer be sent query proposals? The peer must have the chaincode
+        # installed. The app can also use this property to decide which peers to send the
+        # chaincode install request. Default: true
+        chaincodeQuery: true
+
+        # [Optional]. will this peer be sent query proposals that do not require chaincodes, like
+        # queryBlock(), queryTransaction(), etc. Default: true
+        ledgerQuery: true
+
+        # [Optional]. will this peer be the target of the SDK's listener registration? All peers can
+        # produce events but the app typically only needs to connect to one to listen to events.
+        # Default: true
+        eventSource: true
+
+#
+# list of participating organizations in this network
+#
+organizations:
+  RebelAlliance:
+    mspid: RebelAllianceMSP
+
+    peers:
+      - peer0-blockchat
+
+    # [Optional]. Certificate Authorities issue certificates for identification purposes in a Fabric based
+    # network. Typically certificates provisioning is done in a separate process outside of the
+    # runtime network. Fabric-CA is a special certificate authority that provides a REST APIs for
+    # dynamic certificate management (enroll, revoke, re-enroll). The following section is only for
+    # Fabric-CA servers.
+    # certificateAuthorities:
+    #   - ca-blockchat
+
+#
+# List of orderers to send transaction and channel create/update requests to. For the time
+# being only one orderer is needed. If more than one is defined, which one get used by the
+# SDK is implementation specific. Consult each SDK's documentation for its handling of orderers.
+#
+orderers:
+  orderer-blockchat:
+    url: grpcs://orderer.ncsu.blockchain.ncinnovationgarage.com:7050
+
+    # these are standard properties defined by the gRPC library
+    # they will be passed in as-is to gRPC client constructor
+    grpcOptions:
+
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIIDkTCCAzegAwIBAgIUa82ewDZaQ7eDOJu8RyPGcG/xVj8wCgYIKoZIzj0EAwIw
+        gY4xCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEvMC0GA1UE
+        CgwmbmNzdS5ibG9ja2NoYWluLm5jaW5ub3ZhdGlvbmdhcmFnZS5jb20xNTAzBgNV
+        BAMMLHRsc2NhLm5jc3UuYmxvY2tjaGFpbi5uY2lubm92YXRpb25nYXJhZ2UuY29t
+        MB4XDTIwMTAyNzA0MjMwMFoXDTIxMTAyNzA0MjgwMFowgbMxCzAJBgNVBAYTAlVT
+        MRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMGRHVyaGFtMS8wLQYD
+        VQQKEyZuY3N1LmJsb2NrY2hhaW4ubmNpbm5vdmF0aW9uZ2FyYWdlLmNvbTEQMA4G
+        A1UECxMHb3JkZXJlcjE3MDUGA1UEAxMub3JkZXJlci5uY3N1LmJsb2NrY2hhaW4u
+        bmNpbm5vdmF0aW9uZ2FyYWdlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA
+        BPYvqSZljyL8yJzLVVAg08/dnYh/gTsl1GwAgMnj4JByV8Fq9eJTtmzka8SIHmy3
+        nH2yb4GmWKG9Ltv8kSzLGTujggFKMIIBRjAOBgNVHQ8BAf8EBAMCA6gwHQYDVR0l
+        BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYE
+        FPt6DpCtY6z821RpOKXef8HFfFMsMB8GA1UdIwQYMBaAFKDvw/MRLlgvKuOG10kA
+        yp3toQISMEIGA1UdEQQ7MDmCLm9yZGVyZXIubmNzdS5ibG9ja2NoYWluLm5jaW5u
+        b3ZhdGlvbmdhcmFnZS5jb22CB29yZGVyZXIwgYIGCCoDBAUGBwgBBHZ7ImF0dHJz
+        Ijp7ImhmLkFmZmlsaWF0aW9uIjoiIiwiaGYuRW5yb2xsbWVudElEIjoib3JkZXJl
+        ci5uY3N1LmJsb2NrY2hhaW4ubmNpbm5vdmF0aW9uZ2FyYWdlLmNvbSIsImhmLlR5
+        cGUiOiJvcmRlcmVyIn19MAoGCCqGSM49BAMCA0gAMEUCIQCq7YjT0OAEaTGQHweO
+        5RwVsB/jfTEuyk2Ighq6xnmHKwIgBZdOMTNXqsGjugM1f8F6gXPiWv5UxB9nPQhQ
+        DWjCms0=
+        -----END CERTIFICATE-----
+
+#
+# List of peers to send various requests to, including endorsement, query
+# and event listener registration.
+#
+peers:
+  peer0-blockchat:
+    # this URL is used to send endorsement and query requests
+    url: grpcs://peer0.rebelalliance.ncsu.blockchain.ncinnovationgarage.com:5011
+
+    grpcOptions:
+      # grpc-wait-for-ready-timeout: 20000
+      request-timeout: 120001
+
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIIDuzCCA2GgAwIBAgIUYjum+jmWSqDCOSSVhPkwXagE6UUwCgYIKoZIzj0EAwIw
+        gY4xCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEvMC0GA1UE
+        CgwmbmNzdS5ibG9ja2NoYWluLm5jaW5ub3ZhdGlvbmdhcmFnZS5jb20xNTAzBgNV
+        BAMMLHRsc2NhLm5jc3UuYmxvY2tjaGFpbi5uY2lubm92YXRpb25nYXJhZ2UuY29t
+        MB4XDTIwMTAyNzA0MjMwMFoXDTIxMTAyNzA0MjgwMFowgcoxCzAJBgNVBAYTAlVT
+        MRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEPMA0GA1UEBxMGRHVyaGFtMT0wOwYD
+        VQQKEzRyZWJlbGFsbGlhbmNlLm5jc3UuYmxvY2tjaGFpbi5uY2lubm92YXRpb25n
+        YXJhZ2UuY29tMQ0wCwYDVQQLEwRwZWVyMUMwQQYDVQQDEzpwZWVyMC5yZWJlbGFs
+        bGlhbmNlLm5jc3UuYmxvY2tjaGFpbi5uY2lubm92YXRpb25nYXJhZ2UuY29tMFkw
+        EwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKAN1RsD1mLwtTyJy7qk61wpgFr5w7mQW
+        PogBwgzeI2adNgMhkyumZoIzexenMlMnIqpVLDNlbAyl5ggGG8uo/KOCAV0wggFZ
+        MA4GA1UdDwEB/wQEAwIDqDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIw
+        DAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQU8N4+/Qg6n3ITk3MUh7JPlJQJfwUwHwYD
+        VR0jBBgwFoAUoO/D8xEuWC8q44bXSQDKne2hAhIwTAYDVR0RBEUwQ4I6cGVlcjAu
+        cmViZWxhbGxpYW5jZS5uY3N1LmJsb2NrY2hhaW4ubmNpbm5vdmF0aW9uZ2FyYWdl
+        LmNvbYIFcGVlcjAwgYsGCCoDBAUGBwgBBH97ImF0dHJzIjp7ImhmLkFmZmlsaWF0
+        aW9uIjoiIiwiaGYuRW5yb2xsbWVudElEIjoicGVlcjAucmViZWxhbGxpYW5jZS5u
+        Y3N1LmJsb2NrY2hhaW4ubmNpbm5vdmF0aW9uZ2FyYWdlLmNvbSIsImhmLlR5cGUi
+        OiJwZWVyIn19MAoGCCqGSM49BAMCA0gAMEUCIQDZigiqrhftOEQ0J8EgTndgQIOd
+        yfpGN/3HPFTpkvMUTgIgKgfChkWB269v+H/bFCjQOUQVB65QnIzyty/BM6wL0Bo=
+        -----END CERTIFICATE-----
+        
+# # Fabric-CA is a special kind of Certificate Authority provided by Hyperledger Fabric which allows
+# # certificate management to be done via REST APIs. Application may choose to use a standard
+# # Certificate Authority instead of Fabric-CA, in which case this section would not be specified.
+# #
+# certificateAuthorities:
+#   ca-blockchat:
+#     url: https://ca.rebelalliance.ncsu.blockchain.ncinnovationgarage.com:4001
+#     # the properties specified under this object are passed to the 'http' client verbatim when
+#     # making the request to the Fabric-CA server
+#     httpOptions:
+#       verify: false
+
+#     # Fabric-CA supports dynamic user enrollment via REST APIs. A "root" user, a.k.a registrar, is
+#     # needed to enroll and invoke new users.
+#     registrar:
+#       - enrollId: admin
+#         enrollSecret: adminpw
+#     # [Optional] The optional name of the CA.
+#     caName: ca-blockchat

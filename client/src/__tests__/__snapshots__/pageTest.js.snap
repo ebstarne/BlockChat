@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Test the login page is loaded 1`] = `null`;
+
+exports[`Login Test the welcome page is loaded 1`] = `
+Array [
+  <header
+    className="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+    style={
+      Object {
+        "boxShadow": "none",
+      }
+    }
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-between"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <img
+            alt="State"
+            height="64"
+            src="state.png"
+            style={
+              Object {
+                "alignContent": "left",
+              }
+            }
+            width="143"
+          />
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <div>
+            <button
+              aria-haspopup="true"
+              aria-label="additional info for screen"
+              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>,
+  <div
+    className="MuiGrid-root makeStyles-root-5 MuiGrid-container"
+  >
+    <div
+      className="MuiGrid-root makeStyles-image-7 MuiGrid-item MuiGrid-grid-sm-7 MuiGrid-grid-md-8 MuiGrid-grid-lg-9"
+    />
+    <div
+      className="MuiGrid-root makeStyles-paper-6 MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-item MuiGrid-direction-xs-column MuiGrid-align-items-xs-flex-start MuiGrid-align-content-xs-flex-end MuiGrid-justify-xs-space-evenly MuiGrid-grid-xs-12 MuiGrid-grid-sm-5 MuiGrid-grid-md-4 MuiGrid-grid-lg-3"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4"
+        >
+          Welcome
+        </h4>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <a
+          href="/login"
+          onClick={[Function]}
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Enter
+            </span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>,
+]
+`;

@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://dev_user:asdf@blockchat-dev-cluster.cjbzn.mongodb.net/blockchatDb?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}

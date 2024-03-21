@@ -1,0 +1,32 @@
+TF:
+  connectionProfile: './organization/TradeFederation/gateway/network-connection.yaml'
+  userName: 'ca-admin'
+  identity:
+    certificate: "-----BEGIN CERTIFICATE-----\nMIICMTCCAdigAwIBAgIUXWHblyUFUgct4wHAt4cw/  07mcycwCgYIKoZIzj0EAwIw\ngasxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTE/MD0GA1UE\nCgw2dHJhZGVmZWRlcmF0aW9uLm5jc3UuYmxvY2tjaGFpbi5uY2lubm92YXRpb25n\nYXJhZ2UuY29tMUIwQAYDVQQDDDljYS50cmFkZWZlZGVyYXRpb24ubmNzdS5ibG9j\na2NoYWluLm5jaW5ub3ZhdGlvbmdhcmFnZS5jb20wHhcNMjAxMDI3MDQyMzAwWhcN\nMjExMDI3MDQyODAwWjAkMQ8wDQYDVQQLEwZjbGllbnQxETAPBgNVBAMTCGNhLWFk\nbWluMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE1HgufQkaV9pFxQCA2fw57BhH\n/GqHsQPKO6DffSjttZD3lndmherJNWgPORd5HqorkQgHb3u+SKvrOzw4wwq54qNg\nMF4wDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNMZW4Tq\nRRUOM7uYwvBGlfZ5cY4KMB8GA1UdIwQYMBaAFGpOl2H1jTc0y82mgV0g2wLkRy3b\nMAoGCCqGSM49BAMCA0cAMEQCIFxrbUWYvlYuPs8dBp45zhDpbsanz6/JpFql/22d\nKvr7AiBMsCdowuHU8aPuE1GKmO0cVBVknR+Y9glh8u43Ngchhw==\n-----END CERTIFICATE-----\n"
+    privateKey: "-----BEGIN PRIVATE KEY-----\r\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgyuhvIK98yN/Wf50X\r\nhEYeXFyvpU4avQ8onRu80yhTqWmhRANCAATUeC59CRpX2kXFAIDZ/DnsGEf8aoex\r\nA8o7oN99KO21kPeWd2aF6sk1aA85F3keqiuRCAdve75Iq+s7PDjDCrni\r\n-----END PRIVATE KEY-----\r\n"
+    mspId: 'TradeFederationMSP'
+    type: 'X.509'
+    version: 1
+  uri: 'mongodb+srv://dev_user:asdf@blockchat-dev-cluster.cjbzn.mongodb.net/blockchatDb_TF?retryWrites=true&w=majority'
+
+RA:
+  connectionProfile: './organization/RebelAlliance/gateway/network-connection.yaml'
+  userName: 'ca-admin'
+  identity:
+    certificate: "-----BEGIN CERTIFICATE-----\nMIICLjCCAdSgAwIBAgIUc1Rh6fRuWx9qR08rwTbSt/ilC14wCgYIKoZIzj0EAwIw\ngacxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTE9MDsGA1UE\nCgw0cmViZWxhbGxpYW5jZS5uY3N1LmJsb2NrY2hhaW4ubmNpbm5vdmF0aW9uZ2Fy\nYWdlLmNvbTFAMD4GA1UEAww3Y2EucmViZWxhbGxpYW5jZS5uY3N1LmJsb2NrY2hh\naW4ubmNpbm5vdmF0aW9uZ2FyYWdlLmNvbTAeFw0yMDEwMjcwNDIzMDBaFw0yMTEw\nMjcwNDI4MDBaMCQxDzANBgNVBAsTBmNsaWVudDERMA8GA1UEAxMIY2EtYWRtaW4w\nWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQeMxovM5FiBD9vhsqxf4KRWcd/j8Ir\nMPaNT3pphQbWlvUi3MkFJJYzakgTbxdJ0WKtXm4wqTWnEWP866EnLEKBo2AwXjAO\nBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQU68BJnMRn3X0I\niokrh/vyNtU1AY4wHwYDVR0jBBgwFoAUSb7M/S4H66NoilFKo+90c5Pca/kwCgYI\nKoZIzj0EAwIDSAAwRQIhAPgm2utsTnEMKd7+mqZffrWZAxoKh0Vq5NQ99ESNQb+X\nAiB/DZ8RLot8ZRCc2QlLUBP4JZBIrcsTeUNS5p+a/UOC1w==\n-----END CERTIFICATE-----\n"
+    privateKey: "-----BEGIN PRIVATE KEY-----\r\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgQE5p4l63pJcRB6C2\r\nYfOuY9CwRtZde81m+M0/CM+JXzyhRANCAAQeMxovM5FiBD9vhsqxf4KRWcd/j8Ir\r\nMPaNT3pphQbWlvUi3MkFJJYzakgTbxdJ0WKtXm4wqTWnEWP866EnLEKB\r\n-----END PRIVATE KEY-----\r\n"
+    mspId: 'RebelAllianceMSP'
+    type: 'X.509'
+    version: 1
+  uri: 'mongodb+srv://dev_user:asdf@blockchat-dev-cluster.cjbzn.mongodb.net/blockchatDb_RA?retryWrites=true&w=majority'
+
+GE:
+  connectionProfile: './organization/GalacticEmpire/gateway/network-connection.yaml'
+  userName: 'ca-admin'
+  identity:
+    certificate: "-----BEGIN CERTIFICATE-----\nMIICLzCCAdagAwIBAgIUTmKbtJVmpcdsL4PyB38A/I/GR84wCgYIKoZIzj0EAwIw\ngakxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTE+MDwGA1UE\nCgw1Z2FsYWN0aWNlbXBpcmUubmNzdS5ibG9ja2NoYWluLm5jaW5ub3ZhdGlvbmdh\ncmFnZS5jb20xQTA/BgNVBAMMOGNhLmdhbGFjdGljZW1waXJlLm5jc3UuYmxvY2tj\naGFpbi5uY2lubm92YXRpb25nYXJhZ2UuY29tMB4XDTIwMTAyNzA0MjMwMFoXDTIx\nMTAyNzA0MjgwMFowJDEPMA0GA1UECxMGY2xpZW50MREwDwYDVQQDEwhjYS1hZG1p\nbjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPdfo+QEZyrHS/79LLtLabCP86jl\n5jiKjSGU9L/a826ndZBBkuhyOXtXyInraIAuALWno7KX7IHnHvgS3XpN9I2jYDBe\nMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQk4tWZEx+6\nyALFehmKqVOewvLmSDAfBgNVHSMEGDAWgBSIgWQ+XHtXejXaadaLKjCxNqxEUDAK\nBggqhkjOPQQDAgNHADBEAiB+rH0jQLTiQwWqIsiHMQKSxDKJJjTNBrJOm6YLwBbc\nYAIgFusd3/2kZ7oyXGW4hz2v7LBNON7k4LpikeW2dxzuEf4=\n-----END CERTIFICATE-----\n"
+    privateKey: "-----BEGIN PRIVATE KEY-----\r\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgGFW2n6Sw5vVYYgIv\r\nUHGHYL9fBYDkhNrgrP8y8cjBLaShRANCAAT3X6PkBGcqx0v+/Sy7S2mwj/Oo5eY4\r\nio0hlPS/2vNup3WQQZLocjl7V8iJ62iALgC1p6Oyl+yB5x74Et16TfSN\r\n-----END PRIVATE KEY-----\r\n"
+    mspId: 'GalacticEmpireMSP'
+    type: 'X.509'
+    version: 1
+  uri: 'mongodb+srv://dev_user:asdf@blockchat-dev-cluster.cjbzn.mongodb.net/blockchatDb_GE?retryWrites=true&w=majority'

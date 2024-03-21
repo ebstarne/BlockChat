@@ -1,0 +1,39 @@
+{
+  "name": "blockchat",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "server-GE": "npm run server-GE --prefix ../server",
+    "server-RA": "npm run server-RA --prefix ../server",
+    "server-TF": "npm run server-TF --prefix ../server",
+    "client": "npm start --prefix ../client",
+    "dev-GE": "concurrently \"npm run server-GE\" \"npm run client\"",
+    "dev-RA": "concurrently \"npm run server-RA\" \"npm run client\"",
+    "dev-TF": "concurrently \"npm run server-TF\" \"npm run client\"",
+    "install-all": "npm install && (npm install --prefix ../server) && (npm install --prefix ../client)",
+    "install-all-prod": "npm install --production && (npm install --production --prefix  ../server) && (npm install --production --prefix ../client)"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "jest": "^26.6.2",
+    "mongodb-memory-server": "^6.7.5",
+    "mongodb-memory-server-core": "^6.7.5",
+    "mongodb-memory-server-global": "^6.7.5",
+    "react-test-renderer": "^17.0.1"
+  },
+  "dependencies": {
+    "@types/react-virtualized-auto-sizer": "^1.0.0",
+    "@types/redis": "^2.8.27",
+    "@types/socket.io-client": "^1.4.34",
+    "react-virtualized-auto-sizer": "^1.0.2",
+    "redis": "^3.0.2",
+    "socket.io-client": "^2.3.1",
+    "supertest": "^4.0.2",
+    "ws": "^7.3.1"
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "latest"
+    }
+  }
+}
